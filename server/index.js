@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const userRouter = require('./controllers/userController');
-
+const bodyParser = require('body-parser')
 // Load environment variables
 dotenv.config();
 
@@ -14,6 +14,7 @@ dotenv.config();
 const app = express();
 
 // Middleware
+app.use(bodyParser.json({ limit: '50mb' }));
 app.use(express.json()); // Parse JSON bodies
 app.use(cors()); // Enable CORS
 

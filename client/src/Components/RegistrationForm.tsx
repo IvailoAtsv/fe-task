@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import {  Button, Checkbox, CheckboxGroup, FormControl, FormErrorMessage, FormLabel, Input, Stack, VStack } from '@chakra-ui/react';
 import { useForm, SubmitHandler, useFieldArray, Control } from "react-hook-form";
+
 import { interests } from '../constants/interests';
 import { FormData } from '../App';
+import toast from 'react-hot-toast';
 
 interface RegistrationFormProps {
   setFormData: React.Dispatch<React.SetStateAction<FormData>>;
@@ -23,6 +25,10 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({setFormData, handleN
   };
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
+    if(data.password !== data.confirmPassword){
+        toast.error('Passwords do not match');
+        return
+    }
     setFormData({...data, interests:selectedInterests});
     handleNextStep();
   };

@@ -8,30 +8,34 @@ interface AvatarData {
 
 interface AvatarUploadProps {
  updateFields: (fields: Partial<FormData>) => void;
+ registerUser: () => void
 }
 
-const AvatarUpload: React.FC<AvatarUploadProps> = ({ updateFields }) => {
+const AvatarUpload: React.FC<AvatarUploadProps> = ({ updateFields,registerUser }) => {
   const { register, handleSubmit } = useForm<AvatarData>();
   const [preview, setPreview] = useState<string | null>(null);
 
 const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-
   if (event.target.files && event.target.files[0]) {
-    const file = event.target.files[0]
+    const file = event.target.files[0];
     const reader = new FileReader();
     reader.onload = () => {
       const result = reader.result as string;
       setPreview(result);
+      
+      // Encode the file to base64
+      const base64String = result.split(',')[1];
+      
+      // Update the form data with the base64 string
+      updateFields({ avatar: base64String });
     };
     reader.readAsDataURL(file);
-    updateFields({ avatar: file });
-
-    
   }
 };
 
+
   const onSubmit: SubmitHandler<AvatarData> = (data) => {
-    // You can send the image data to your backend here
+      registerUser();
   };
 
   return (
@@ -42,11 +46,12 @@ const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
           <Input
             id="avatar"
             type="file"
+            padding={1}
             accept="image/*"
             required
             onChange={handleFileChange}
           />
-          {preview && <Image padding={4} src={preview} alt="Avatar Preview" maxWidth="200px" />}
+          {preview && <Image padding={4} src={preview} alt="Avatar Preview" maxWidth="350px" />}
         </FormControl>
         <Button type="submit" colorScheme="blue">
           Submit
