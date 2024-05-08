@@ -15,10 +15,11 @@ Before getting started, ensure that you have the following installed:
 1. **Clone the Repository**
 
    ```bash
-   git clone <repository_url>
+   git clone (https://github.com/IvailoAtsv/fe-task.git)
 
 2. **Install Dependecies**
-
+   
+ ```bash
    cd client
    npm install
 
@@ -33,5 +34,8 @@ Before getting started, ensure that you have the following installed:
    ORIGIN = http://localhost:3000
    MONGODB_URI = mongodb://127.0.0.1/users
 4. **Start the project up!**
-    type `npm start` in the terminal of both folders(server & client)
+    ```bash 
+    npm start 
+    
+    in the terminal of both folders(server & client)
    
