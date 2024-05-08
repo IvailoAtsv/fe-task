@@ -30,9 +30,9 @@ Before getting started, ensure that you have the following installed:
 ```
 3. **Setup the .env file in server folder:**
 
-   PORT = 5001
-   ORIGIN = http://localhost:3000
-   MONGODB_URI = mongodb://127.0.0.1/users
+   PORT = 5001 <br>
+   ORIGIN = http://localhost:3000 <br>
+   MONGODB_URI = mongodb://127.0.0.1/users <br>
 
 4. **Start the project up!**
 
