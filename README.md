@@ -28,15 +28,16 @@ Before getting started, ensure that you have the following installed:
    cd server
    npm install
 ```
-3. **Setup .env files**
-   in server folder:
+3. **Setup the .env file in server folder:**
+
    PORT = 5001
    ORIGIN = http://localhost:3000
    MONGODB_URI = mongodb://127.0.0.1/users
+
 4. **Start the project up!**
-5. 
+
     ```bash 
     npm start 
-```
-    in the terminal of both folders(server & client)
-   
+    ```
+
+ 
