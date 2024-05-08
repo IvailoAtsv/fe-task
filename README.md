@@ -44,3 +44,7 @@ Before getting started, ensure that you have the following installed:
 
 https://github.com/IvailoAtsv/fe-task/assets/105544716/51f0757a-2e04-463e-93eb-838ea2a2106e
 
+### Personal notes
+Please excuse the very poor use of commits/github, the majority of this project was written in the back of a car while traveling for Easter. <br>
+### Happy coding!
+
