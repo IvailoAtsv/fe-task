@@ -22,6 +22,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({setFormData, handleN
     // Limit the selection to a maximum of two interests
     const updatedValues = values.slice(0, 2);
     setSelectedInterests(updatedValues);
+
   };
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
@@ -29,8 +30,19 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({setFormData, handleN
         toast.error('Passwords do not match');
         return
     }
+    if(selectedInterests.length == 0){
+        toast.error('Please select at least one interest');
+        return
+    }
     setFormData({...data, interests:selectedInterests});
     handleNextStep();
+  };
+
+const validateName = (value: string) => {
+    if (/\d/.test(value)) {
+      return "Name must not contain numbers";
+    }
+    return true;
   };
 
   return (
@@ -38,13 +50,13 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({setFormData, handleN
       <VStack spacing={4} maxWidth="800px" padding="8" align="stretch">
         <FormControl isInvalid={!!errors.firstName}>
           <FormLabel htmlFor="firstName">First Name</FormLabel>
-          <Input id="firstName" {...register('firstName', { required: 'First name is required' })} />
+          <Input id="firstName" {...register('firstName', { required: 'First name is required', validate:validateName })} />
           <FormErrorMessage>{errors.firstName && errors.firstName.message}</FormErrorMessage>
         </FormControl>
 
         <FormControl isInvalid={!!errors.lastName}>
           <FormLabel htmlFor="lastName">Last Name</FormLabel>
-          <Input id="lastName" {...register('lastName', { required: 'Last name is required' })} />
+          <Input id="lastName" {...register('lastName', { required: 'Last name is required', validate:validateName })} />
           <FormErrorMessage>{errors.lastName && errors.lastName.message}</FormErrorMessage>
         </FormControl>
 
