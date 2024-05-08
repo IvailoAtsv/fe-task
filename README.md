@@ -40,4 +40,7 @@ Before getting started, ensure that you have the following installed:
     npm start 
     ```
 
- 
+ ## Demo
+
+https://github.com/IvailoAtsv/fe-task/assets/105544716/51f0757a-2e04-463e-93eb-838ea2a2106e
+
